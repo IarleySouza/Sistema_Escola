@@ -8,6 +8,7 @@ public class Sala {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "pk_id_sala")
     private Long id;
 
     @Column(name = "nome_sala")
@@ -15,9 +16,6 @@ public class Sala {
 
     @Column(name = "capacidade")
     private Long capacidade;
-
-    @OneToMany
-    private Aluno aluno;
 
 
     public Long getId() {
