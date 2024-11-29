@@ -1,7 +1,10 @@
 package com.equipe1.sistema_escola.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_professor")
@@ -17,6 +20,11 @@ public class Professor {
 
     @Column(name = "email_professor")
     private String email;
+
+    @OneToMany(mappedBy = "professor")
+    @JsonIgnore
+    private List<Aluno> alunos;
+
 
     public Long getId() {
         return id;
@@ -40,5 +48,13 @@ public class Professor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
 }

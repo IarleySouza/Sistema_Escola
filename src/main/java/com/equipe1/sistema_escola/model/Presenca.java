@@ -15,6 +15,38 @@ public class Presenca {
     @Column(name = "data_presenca")
     private Date datapresenca;
 
+    @ManyToOne
+    private Aluno aluno;
+
+    @ManyToOne
+    private Sala sala;
+
+    @ManyToOne
+    private Professor professor;
+
+    public Aluno getAluno() {
+        return aluno;
+    }
+
+    public void setAluno(Aluno aluno) {
+        this.aluno = aluno;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
 
     public Long getId() {
         return id;

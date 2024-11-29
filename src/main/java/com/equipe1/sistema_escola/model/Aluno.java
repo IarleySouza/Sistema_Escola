@@ -1,5 +1,6 @@
 package com.equipe1.sistema_escola.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.Date;
@@ -23,11 +24,29 @@ public class Aluno {
     private Date dataNascimento;
 
     @ManyToOne
+    @JoinColumn(name= "professor_id", referencedColumnName = "pk_id_professor", nullable = false)
+    @JsonBackReference
     private Professor professor;
 
     @ManyToOne
+    @JoinColumn(name= "sala_id", nullable = false)
     private Sala sala;
 
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Sala getSala() {
+        return sala;
+    }
+
+    public void setSala(Sala sala) {
+        this.sala = sala;
+    }
 
     public Long getId() {
         return id;

@@ -1,6 +1,9 @@
 package com.equipe1.sistema_escola.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table(name = "tb_sala")
@@ -17,6 +20,17 @@ public class Sala {
     @Column(name = "capacidade")
     private Long capacidade;
 
+    @OneToMany(mappedBy = "sala")
+    @JsonIgnore
+    private List<Aluno> alunos;
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
 
     public Long getId() {
         return id;
